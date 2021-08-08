@@ -1,4 +1,4 @@
-.popup__edit-btn_action_save {
+.popup__btn-save {
     background-image: url(../../../../images/SaveButton.svg);
     background-repeat: no-repeat;
     margin: 0 auto;
@@ -11,13 +11,13 @@
     left: 34px;
 }
 
-.popup__edit-btn_action_save:hover {
+.popup__btn-save:hover {
     opacity: 0.8;
     transition: opacity 0.2s ease-in-out 0.2s;
 }
 
 @media screen and (max-width: 768px) {
-    .popup__edit-btn_action_save {
+    .popup__btn-save {
         background-image: url(../../../../images/Submit_Button-small.svg);
         width: 238px;
         height: 46px;

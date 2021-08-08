@@ -2,8 +2,8 @@ let container = document.querySelector('.root');
 let popupBackground = container.querySelector('.popup');
 let messageEdit = container.querySelector('.popup__container');
 let buttonEdit = container.querySelector('.profile__btn-edit');
-let buttonClose = container.querySelector('.popup__edit-btn_action_close');
-let buttonSave = container.querySelector('.popup__edit-btn_action_save');
+let buttonClose = container.querySelector('.popup__btn-close');
+let buttonSave = container.querySelector('.popup__btn-save');
 
 function showClick() {
 messageEdit.classList.add('popup__opened');

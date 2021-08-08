@@ -1,4 +1,4 @@
-.popup__edit-btn_action_close {
+.popup__btn-close {
     background-image: url(../../../../images/Close-Icon.svg);
     background-repeat: no-repeat;
     width: 32px;
@@ -9,13 +9,13 @@
     cursor: pointer;
 }
 
-.popup__edit-btn_action_close:hover {
+.popup__btn-close:hover {
     opacity: 0.6;
     transition: opacity 0.2s ease-in-out 0.2s;
 }
 
 @media screen and (max-width: 768px) {
-    .popup__edit-btn_action_close {
+    .popup__btn-close {
         background-image: url(../../../../images/Close_icon-small.svg);
         width: 20px;
         height: 20px;
