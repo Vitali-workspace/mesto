@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Mesto</title>
+</head>
+
+<body class="root">
+    <div class="popup root__container">
+        <header class="header">
+            <div class="header__logo"></div>
+            <div class="header__line"></div>
+        </header>
+        <main class="page">
+            <section class="profile">
+                <div class="profile__avatar"></div>
+                <h1 id="profileHeader" class="profile__header">Жак-Ив Кусто</h1>
+                <p id="profileText" class="profile__text">Исследователь океана</p>
+                <div class="profile__btn-edit"></div>
+                <div class="profile__btn-add"></div>
+            </section>
+            <section class="gallery">
+                <article class="gallery__item">
+                    <img class="gallery__item-image" src="./images/Albufeira_Portugal.jpg" alt="улица в Португалии">
+                    <div class="gallery__item-header">
+                        <p class="gallery__item-text">Португалия</p>
+                        <div class="gallery__item-like"></div>
+                    </div>
+                </article>
+                <article class="gallery__item">
+                    <img class="gallery__item-image" src="./images/Bristol_England.jpg" alt="улица в Англии">
+                    <div class="gallery__item-header">
+                        <p class="gallery__item-text">Англия</p>
+                        <div class="gallery__item-like"></div>
+                    </div>
+                </article>
+                <article class="gallery__item">
+                    <img class="gallery__item-image" src="./images/Jiangsu_China.jpg" alt="улица в Китае">
+                    <div class="gallery__item-header">
+                        <p class="gallery__item-text">Китай</p>
+                        <div class="gallery__item-like"></div>
+                    </div>
+                </article>
+                <article class="gallery__item">
+                    <img class="gallery__item-image" src="./images/Mykonos_Greece.jpg" alt="улица в Сен-Пьер и Микелон">
+                    <div class="gallery__item-header">
+                        <p class="gallery__item-text">Сен-Пьер и Микелон</p>
+                        <div class="gallery__item-like"></div>
+                    </div>
+                </article>
+                <article class="gallery__item">
+                    <img class="gallery__item-image" src="./images/sandra_seitamaa.jpg"
+                        alt="улица на Маршалловых Островах ">
+                    <div class="gallery__item-header">
+                        <p class="gallery__item-text">Маршалловы Острова</p>
+                        <div class="gallery__item-like"></div>
+                    </div>
+                </article>
+                <article class="gallery__item">
+                    <img class="gallery__item-image" src="./images/Zadar_Croatia.jpg" alt="улица в Хорватии">
+                    <div class="gallery__item-header">
+                        <p class="gallery__item-text">Хорватия</p>
+                        <div class="gallery__item-like"></div>
+                    </div>
+                </article>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">© 2020 Mesto Russia</p>
+        </footer>
+        <div class="popup__hidden popup__container">
+            <div class="popup__edit-btn_action_close"></div>
+            <h2 class="popup__edit-header">Редактировать профиль</h2>
+            <form class="popup__form-edit">
+                <input type="text" placeholder="Имя" value="Жак-Ив Кусто" class="popup__edit-name">
+                <input type="text" placeholder="О себе" value="Исследователь океана" class="popup__edit-description">
+                <button class="popup__edit-btn_action_save"></button>
+            </form>
+        </div>
+    </div>
+    <script src="./script/script.js"></script>
+</body>
+
+</html>

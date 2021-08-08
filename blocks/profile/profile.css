@@ -1,0 +1,30 @@
+.profile {
+    max-width: 880px;
+    min-height: 120px;
+    display: grid;
+    grid-template-columns: 17% 35.5% 30.5%;
+    grid-template-rows: 53% 49%;
+    grid-template-areas:
+        "area-img area-name area-btnEdit area-btnAdd"
+        "area-img area-text area-btnEdit area-btnAdd";
+}
+
+@media screen and (max-width: 1024px) {
+    .profile {
+        grid-template-columns: 21% 39% 14%;
+        grid-template-rows: 53% 49%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .profile {
+        grid-template-columns: 302px;
+        grid-template-rows: 49% 19% 25%;
+        grid-template-areas:
+            "area-img"
+            "area-name"
+            "area-text"
+            "area-btnAdd";
+    }
+    
+}

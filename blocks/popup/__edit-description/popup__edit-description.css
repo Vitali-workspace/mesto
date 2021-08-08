@@ -1,0 +1,25 @@
+.popup__edit-description {
+    position: relative;
+    left: 37px;
+    min-width: 348px;
+    min-height: 27px;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    margin: 0 auto;
+    margin-top: 28px;
+}
+
+.popup__edit-description::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;
+    color: #000000;
+}
+
+@media screen and (max-width: 768px) {
+    .popup__edit-description {
+        min-width: 230px;
+        left: 24px;
+    }
+}

@@ -1,0 +1,19 @@
+.gallery__item-like {
+    background-image: url(../../../images/like_icon.svg);
+    background-repeat: no-repeat;
+    padding: 0px 21px 7px 0;
+    height: 19px;
+    width: 22px;
+}
+
+.gallery__item-like:hover {
+    color: #000000;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out 0.2s;
+}
+
+.gallery__item-like:active {
+    background-image: url(../../../images/like_icon-active.svg);
+    opacity: 1;
+}

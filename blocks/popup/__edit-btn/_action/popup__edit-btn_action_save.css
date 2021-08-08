@@ -1,0 +1,27 @@
+.popup__edit-btn_action_save {
+    background-image: url(../../../../images/SaveButton.svg);
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    margin-top: 48px;
+    width: 358px;
+    height: 50px;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    left: 34px;
+}
+
+.popup__edit-btn_action_save:hover {
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out 0.2s;
+}
+
+@media screen and (max-width: 768px) {
+    .popup__edit-btn_action_save {
+        background-image: url(../../../../images/Submit_Button-small.svg);
+        width: 238px;
+        height: 46px;
+        left: 22px;
+        margin-top: 44px;
+    }
+}
