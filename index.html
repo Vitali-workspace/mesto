@@ -20,8 +20,8 @@
                 <div class="profile__avatar"></div>
                 <h1 id="profileHeader" class="profile__header">Жак-Ив Кусто</h1>
                 <p id="profileText" class="profile__text">Исследователь океана</p>
-                <div class="profile__btn-edit"></div>
-                <div class="profile__btn-add"></div>
+                <button class="profile__btn-edit"></button>
+                <button class="profile__btn-add"></button>
             </section>
             <section class="gallery">
                 <div class="gallery__item">
@@ -72,15 +72,17 @@
         <footer class="footer">
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
-        <div class="popup__hidden popup__container">
-            <div class="popup__btn-close"></div>
-            <h2 class="popup__edit-header">Редактировать профиль</h2>
-            <form class="popup__form-edit">
-                <input type="text" placeholder="Имя" value="Жак-Ив Кусто" class="popup__edit-name">
-                <input type="text" placeholder="О себе" value="Исследователь океана" class="popup__edit-description">
-                <button class="popup__btn-save"></button>
-            </form>
-        </div>
+        
+    </div>
+
+    <div class="popup__hidden popup__container">
+        <button class="popup__btn-close"></button>
+        <h2 class="popup__edit-header">Редактировать профиль</h2>
+        <form class="popup__form-edit">
+            <input type="text" placeholder="Имя" value="Жак-Ив Кусто" class="popup__edit-name">
+            <input type="text" placeholder="О себе" value="Исследователь океана" class="popup__edit-description">
+            <button class="popup__btn-save"></button>
+        </form>
     </div>
     <script src="./script/script.js"></script>
 </body>

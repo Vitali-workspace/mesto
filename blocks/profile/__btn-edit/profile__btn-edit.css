@@ -5,6 +5,8 @@
     width: 24px;
     height: 24px;
     margin-top: 37px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .profile__btn-edit:hover {
@@ -28,7 +30,7 @@
         display: flex;
         justify-self: right;
         margin: 0;
-        padding-right: 29px;
+        padding-right: 40px;
         margin-top: 31px;
     }
 }

@@ -1,12 +1,13 @@
 .popup__edit-description {
     position: relative;
     left: 37px;
-    min-width: 348px;
-    min-height: 27px;
+    min-width: 354px;
     border: 0;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     margin: 0 auto;
-    margin-top: 28px;
+    margin-top: 18px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .popup__edit-description::placeholder {

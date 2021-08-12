@@ -5,7 +5,6 @@
     line-height: 1.14;
     margin: 0;
     padding-top: 22px;
-    min-height: 49px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -23,7 +22,6 @@
 @media screen and (max-width: 768px) {
     .profile__header {
         max-width: 200px;
-        min-height: 33px;
         padding-left: 0;
         margin: 0 auto;
     }

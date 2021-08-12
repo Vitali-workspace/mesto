@@ -1,11 +1,12 @@
 .popup__edit-name {
     position: relative;
     left: 36px;
-    min-width: 348px;
-    min-height: 27px;
+    min-width: 354px;
     border: 0;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     margin: 0 auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .popup__edit-name::placeholder {

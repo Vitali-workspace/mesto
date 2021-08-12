@@ -1,5 +1,5 @@
 .popup__btn-save {
-    background-image: url(../../../../images/SaveButton.svg);
+    background-image: url(../../../images/SaveButton.svg);
     background-repeat: no-repeat;
     margin: 0 auto;
     margin-top: 48px;
@@ -9,6 +9,7 @@
     cursor: pointer;
     position: relative;
     left: 34px;
+    border: none;
 }
 
 .popup__btn-save:hover {
@@ -18,7 +19,7 @@
 
 @media screen and (max-width: 768px) {
     .popup__btn-save {
-        background-image: url(../../../../images/Submit_Button-small.svg);
+        background-image: url(../../../images/Submit_Button-small.svg);
         width: 238px;
         height: 46px;
         left: 22px;

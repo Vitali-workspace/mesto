@@ -6,13 +6,13 @@ let buttonClose = container.querySelector('.popup__btn-close');
 let buttonSave = container.querySelector('.popup__btn-save');
 
 function showClick() {
-messageEdit.classList.add('popup__opened');
+messageEdit.classList.add('popup_opened');
 messageEdit.classList.remove('popup__hidden');
-popupBackground.classList.add('popup__opened');
+popupBackground.classList.add('popup_opened');
 }
 
 function сloseClick() {
-    popupBackground.classList.remove('popup__opened');
+    popupBackground.classList.remove('popup_opened');
     messageEdit.classList.add('popup__hidden');
     formElement.reset();
 }
@@ -31,7 +31,7 @@ function formSubmitHandler (evt) {
     nameInput.textContent = `${name}`;
     const jobsNew = nameInput.textContent;
     jobInput.textContent = `${jobs}`;
-    popupBackground.classList.remove('popup__opened');
+    popupBackground.classList.remove('popup_opened');
     messageEdit.classList.add('popup__hidden');
 }
 

@@ -3,7 +3,7 @@
     min-height: 120px;
     display: grid;
     grid-template-columns: 17% 35.5% 30.5%;
-    grid-template-rows: 53% 49%;
+    grid-template-rows: 59% 37%;
     grid-template-areas:
         "area-img area-name area-btnEdit area-btnAdd"
         "area-img area-text area-btnEdit area-btnAdd";
@@ -19,7 +19,7 @@
 @media screen and (max-width: 768px) {
     .profile {
         grid-template-columns: 302px;
-        grid-template-rows: 49% 19% 25%;
+        grid-template-rows: 49% 23% 22%;
         grid-template-areas:
             "area-img"
             "area-name"

@@ -13,4 +13,4 @@
 
 
 ## Ссылка на GitHub Pages
-https://vitali-workspace.github.io прописать дальше
+https://vitali-workspace.github.io/mesto-public/index.html
