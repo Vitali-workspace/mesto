@@ -1,8 +1,7 @@
 .popup__btn-save {
     background-image: url(../../../images/SaveButton.svg);
     background-repeat: no-repeat;
-    margin: 0 auto;
-    margin-top: 48px;
+    margin: 48px auto 34px;
     width: 358px;
     height: 50px;
     border-radius: 2px;
@@ -10,6 +9,7 @@
     position: relative;
     left: 34px;
     border: none;
+    padding: 0;
 }
 
 .popup__btn-save:hover {
