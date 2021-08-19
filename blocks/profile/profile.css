@@ -1,6 +1,5 @@
 .profile {
     max-width: 880px;
-    min-height: 120px;
     display: grid;
     grid-template-columns: 17% 35.5% 30.5%;
     grid-template-rows: 59% 37%;

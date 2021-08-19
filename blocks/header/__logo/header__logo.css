@@ -1,14 +1,6 @@
 .header__logo {
-    background-image: url(../../../images/logo_mesto.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
     width: 142px;
     height: 33px;
-}
-
-.header__logo:hover {
-    background-image: url(../../../images/logo_black.svg);
-    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

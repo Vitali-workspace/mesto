@@ -12,74 +12,73 @@
 <body class="root">
     <div class="root__container">
         <header class="header">
-            <div class="header__logo"></div>
-            <div class="header__line"></div>
+            <img class="header__logo" src="./images/logo_mesto.svg" alt="логотип сайта">
         </header>
         <main class="page">
             <section class="profile">
                 <div class="profile__avatar"></div>
-                <h1 id="profileHeader" class="profile__header">Жак-Ив Кусто</h1>
-                <p id="profileText" class="profile__text">Исследователь океана</p>
-                <button class="profile__btn-edit"></button>
-                <button class="profile__btn-add"></button>
+                <h1 id="profileName" class="profile__header">Жак-Ив Кусто</h1>
+                <p id="profileJob" class="profile__text">Исследователь океана</p>
+                <button class="profile__btn-edit" type="button"></button>
+                <button class="profile__btn-add" type="button"></button>
             </section>
             <section class="gallery">
                 <div class="gallery__item">
                     <img class="gallery__item-image" src="./images/Albufeira_Portugal.jpg" alt="улица в Португалии">
                     <div class="gallery__item-header">
-                        <p class="gallery__item-text">Португалия</p>
-                        <div class="gallery__item-like"></div>
+                        <h2 class="gallery__item-text">Португалия</h2>
+                        <button class="gallery__item-like" type="button"></button>
                     </div>
                 </div>
                 <div class="gallery__item">
                     <img class="gallery__item-image" src="./images/Bristol_England.jpg" alt="улица в Англии">
                     <div class="gallery__item-header">
-                        <p class="gallery__item-text">Англия</p>
-                        <div class="gallery__item-like"></div>
+                        <h2 class="gallery__item-text">Англия</h2>
+                        <button class="gallery__item-like" type="button"></button>
                     </div>
                 </div>
                 <div class="gallery__item">
                     <img class="gallery__item-image" src="./images/Jiangsu_China.jpg" alt="улица в Китае">
                     <div class="gallery__item-header">
-                        <p class="gallery__item-text">Китай</p>
-                        <div class="gallery__item-like"></div>
+                        <h2 class="gallery__item-text">Китай</h2>
+                        <button class="gallery__item-like" type="button"></button>
                     </div>
                 </div>
                 <div class="gallery__item">
                     <img class="gallery__item-image" src="./images/Mykonos_Greece.jpg" alt="улица в Сен-Пьер и Микелон">
                     <div class="gallery__item-header">
-                        <p class="gallery__item-text">Сен-Пьер и Микелон</p>
-                        <div class="gallery__item-like"></div>
+                        <h2 class="gallery__item-text">Сен-Пьер и Микелон</h2>
+                        <button class="gallery__item-like" type="button"></button>
                     </div>
                 </div>
                 <div class="gallery__item">
                     <img class="gallery__item-image" src="./images/sandra_seitamaa.jpg"
                         alt="улица на Маршалловых Островах ">
                     <div class="gallery__item-header">
-                        <p class="gallery__item-text">Маршалловы Острова</p>
-                        <div class="gallery__item-like"></div>
+                        <h2 class="gallery__item-text">Маршалловы Острова</h2>
+                        <button class="gallery__item-like" type="button"></button>
                     </div>
                 </div>
                 <div class="gallery__item">
                     <img class="gallery__item-image" src="./images/Zadar_Croatia.jpg" alt="улица в Хорватии">
                     <div class="gallery__item-header">
-                        <p class="gallery__item-text">Хорватия</p>
-                        <div class="gallery__item-like"></div>
+                        <h2 class="gallery__item-text">Хорватия</h2>
+                        <button class="gallery__item-like" type="button"></button>
                     </div>
                 </div>
             </section>
         </main>
         <footer class="footer">
-            <p class="footer__copyright">© 2020 Mesto Russia</p>
+            <p class="footer__copyright">&copy 2020 Mesto Russia</p>
         </footer>
-        <div class="popup root__hidden">
-            <div class="root__hidden popup__container">
-                <button class="popup__btn-close"></button>
+        <div class="popup">
+            <div class="popup__container">
+                <button class="popup__btn-close" type="button"></button>
                 <h2 class="popup__edit-header">Редактировать профиль</h2>
-                <form class="popup__form-edit">
-                    <input type="text" placeholder="Имя" value="Жак-Ив Кусто" class="popup__edit-name">
-                    <input type="text" placeholder="О себе" value="Исследователь океана" class="popup__edit-description">
-                    <button class="popup__btn-save"></button>
+                <form class="popup__form-edit" name="form-edit">
+                    <input class="popup__edit-description" id="editName" type="text" placeholder="Имя" value="">
+                    <input class="popup__edit-description" id="editJob" type="text" placeholder="О себе" value="">
+                    <button class="popup__btn-save" type="submit"></button>
                 </form>
             </div>
         </div>

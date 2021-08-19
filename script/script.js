@@ -1,39 +1,39 @@
 let container = document.querySelector('.root');
-let popupBackground = container.querySelector('.popup');
-let messageEdit = container.querySelector('.popup__container');
+let popupEdit = container.querySelector('.popup');
 let buttonEdit = container.querySelector('.profile__btn-edit');
 let buttonClose = container.querySelector('.popup__btn-close');
-let buttonSave = container.querySelector('.popup__btn-save');
+let formElement = container.querySelector('.popup__form-edit');
+// обращение к тексту профиля
+let nameProfile = container.querySelector('.profile__header');
+let jobProfile = container.querySelector('.profile__text');
+// обращение к input
+let nameInput = document.getElementById('editName');
+let jobInput = document.getElementById('editJob');
 
 function showClick() {
-messageEdit.classList.add('popup_opened');
-messageEdit.classList.remove('root__hidden');
-popupBackground.classList.remove('root__hidden');
+    popupEdit.classList.add('popup_opened');
+    // подстановка текста в форму
+    nameInput.value = nameProfile.innerHTML;
+    jobInput.value = jobProfile.innerHTML;
 }
 
 function сloseClick() {
-    popupBackground.classList.remove('popup_opened');
-    messageEdit.classList.add('root__hidden');
-    popupBackground.classList.add('root__hidden');
+    popupEdit.classList.remove('popup_opened');
+}
+
+function resetInput () {
     formElement.reset();
 }
 
-buttonClose.addEventListener('click', сloseClick);
-buttonEdit.addEventListener('click', showClick);
-let formElement = container.querySelector('.popup__form-edit');
-let nameInput = document.getElementById('profileHeader');
-let jobInput = document.getElementById('profileText');
-
-function formSubmitHandler (evt) {
+function submitFormEdit (evt) {
     evt.preventDefault();
-    let name = formElement.querySelector('.popup__edit-name').value;
-    let jobs = formElement.querySelector('.popup__edit-description').value;
-    const nameNew = nameInput.textContent;
-    nameInput.textContent = `${name}`;
-    const jobsNew = nameInput.textContent;
-    jobInput.textContent = `${jobs}`;
-    popupBackground.classList.remove('popup_opened');
-    popupBackground.classList.add('root__hidden');
+    // запись новых значений в профиль
+    const nameValue = nameProfile.textContent = `${nameInput.value}`;
+    const jobValue = jobProfile.textContent = `${jobInput.value}`;
+    popupEdit.classList.remove('popup_opened');
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
+buttonClose.addEventListener('click', resetInput);
+buttonClose.addEventListener('click', сloseClick);
+buttonEdit.addEventListener('click', showClick);
+formElement.addEventListener('submit', submitFormEdit);

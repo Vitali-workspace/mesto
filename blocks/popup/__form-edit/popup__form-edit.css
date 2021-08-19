@@ -1,0 +1,11 @@
+.popup__form-edit {
+display: flex;
+flex-direction: column;
+min-width: 430px;
+}
+
+@media screen and (max-width: 768px) {
+    .popup__form-edit {
+        min-width: 282px;
+    }
+}

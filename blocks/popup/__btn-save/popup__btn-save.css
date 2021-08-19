@@ -1,13 +1,13 @@
 .popup__btn-save {
     background-image: url(../../../images/SaveButton.svg);
     background-repeat: no-repeat;
+    font-size: 18px;
+    line-height: 22px;
     margin: 48px auto 34px;
     width: 358px;
     height: 50px;
     border-radius: 2px;
     cursor: pointer;
-    position: relative;
-    left: 34px;
     border: none;
     padding: 0;
 }
@@ -22,7 +22,8 @@
         background-image: url(../../../images/Submit_Button-small.svg);
         width: 238px;
         height: 46px;
-        left: 22px;
         margin-top: 44px;
+        font-size: 14px;
+        line-height: 17px;
     }
 }

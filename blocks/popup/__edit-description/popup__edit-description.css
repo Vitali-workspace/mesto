@@ -1,6 +1,4 @@
 .popup__edit-description {
-    position: relative;
-    left: 37px;
     min-width: 354px;
     border: 0;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
@@ -8,6 +6,8 @@
     margin-top: 18px;
     padding-bottom: 10px;
     padding-top: 10px;
+    font-size: 14px;
+    line-height: 17px;
 }
 
 .popup__edit-description::placeholder {
@@ -21,6 +21,5 @@
 @media screen and (max-width: 768px) {
     .popup__edit-description {
         min-width: 230px;
-        left: 24px;
     }
 }
