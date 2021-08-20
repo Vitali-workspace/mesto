@@ -21,19 +21,14 @@ function сloseClick() {
     popupEdit.classList.remove('popup_opened');
 }
 
-function resetInput () {
-    formElement.reset();
-}
-
 function submitFormEdit (evt) {
     evt.preventDefault();
     // запись новых значений в профиль
-    const nameValue = nameProfile.textContent = `${nameInput.value}`;
-    const jobValue = jobProfile.textContent = `${jobInput.value}`;
-    popupEdit.classList.remove('popup_opened');
+    nameProfile.textContent = `${nameInput.value}`;
+    jobProfile.textContent = `${jobInput.value}`;
+    сloseClick()
 }
 
-buttonClose.addEventListener('click', resetInput);
 buttonClose.addEventListener('click', сloseClick);
 buttonEdit.addEventListener('click', showClick);
 formElement.addEventListener('submit', submitFormEdit);
