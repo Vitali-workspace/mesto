@@ -1,0 +1,5 @@
+.gallery__card-header {
+  display: flex;
+  padding: 20px 15px 0 21px;
+  justify-content: space-between;
+}
