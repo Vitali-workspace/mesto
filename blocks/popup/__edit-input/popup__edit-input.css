@@ -1,9 +1,9 @@
 .popup__edit-input {
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
-  width: 357px;
-  margin: 8px 36px 0;
-  padding: 13px 3px;
+  width: 351px;
+  margin: 0 36px 16px;
+  padding: 10px 3px;
 }
 
 .popup__edit-input::placeholder {
@@ -14,7 +14,7 @@
 
 @media screen and (max-width: 768px) {
   .popup__edit-input {
-    width: 238px;
-    margin: 8px 21px 0;
+    width: 231px;
+    margin: 0 21px 16px;
   }
 }
