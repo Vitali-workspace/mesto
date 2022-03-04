@@ -1,0 +1,17 @@
+@keyframes moveback {
+  0% {
+    opacity: 1;
+    display: flex;
+  }
+  50% {
+  	opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.popup_close {
+  animation: moveback 0.3s ease-out;
+}

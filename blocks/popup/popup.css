@@ -1,3 +1,17 @@
+@keyframes move {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+  50% {
+  	opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    display: flex;
+  }
+}
+
 .popup {
   display: none;
   position: fixed;
@@ -6,4 +20,6 @@
   left: 0;
   right: 0;
   bottom: 0;
+  animation: move 0.3s ease-out;
 }
+

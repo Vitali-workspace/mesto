@@ -22,55 +22,13 @@
         <button class="profile__btn-edit" type="button"></button>
         <button class="profile__btn-add" type="button"></button>
       </section>
-      <section class="gallery">
-        <div class="gallery__card">
-          <img class="gallery__card-img" src="./images/1z-min.jpeg" alt="город Сиди-Бель-Аббес">
-          <div class="gallery__card-header">
-            <h3 class="gallery__card-name">Сиди-Бель-Аббес</h3>
-            <button class="gallery__btn-favorites" type="button"></button>
-          </div>
-        </div>
-        <div class="gallery__card">
-          <img class="gallery__card-img" src="./images/2z-min.jpeg" alt="штат Вашингтон">
-          <div class="gallery__card-header">
-            <h3 class="gallery__card-name">Вашингтон</h3>
-            <button class="gallery__btn-favorites" type="button"></button>
-          </div>
-        </div>
-        <div class="gallery__card">
-          <img class="gallery__card-img" src="./images/3z-min.jpeg" alt="город Луанда">
-          <div class="gallery__card-header">
-            <h3 class="gallery__card-name">Луанда</h3>
-            <button class="gallery__btn-favorites" type="button"></button>
-          </div>
-        </div>
-        <div class="gallery__card">
-          <img class="gallery__card-img" src="./images/4z.jpeg" alt="город на Соломоновых Островах">
-          <div class="gallery__card-header">
-            <h3 class="gallery__card-name">Соломоновы Острова</h3>
-            <button class="gallery__btn-favorites" type="button"></button>
-          </div>
-        </div>
-        <div class="gallery__card">
-          <img class="gallery__card-img" src="./images/5z-min.jpeg" alt="город Шанхай">
-          <div class="gallery__card-header">
-            <h3 class="gallery__card-name">Шанхай</h3>
-            <button class="gallery__btn-favorites" type="button"></button>
-          </div>
-        </div>
-        <div class="gallery__card">
-          <img class="gallery__card-img" src="./images/6z-min.jpeg" alt="город Тегеран">
-          <div class="gallery__card-header">
-            <h3 class="gallery__card-name">Тегеран</h3>
-            <button class="gallery__btn-favorites" type="button"></button>
-          </div>
-        </div>
-      </section>
+      <section class="gallery" aria-label="галерея"></section>
     </main>
     <footer class="footer">
       <p class="footer__copyright"> 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+
+    <div id="popupEdit" class="popup">
       <div class="popup__container">
         <h2 class="popup__edit-header">Редактировать профиль</h2>
         <form id="formEdit" name="form-edit">
@@ -83,7 +41,40 @@
         <button class="popup__btn-close" type="button"></button>
       </div>
     </div>
+
+    <div id="popupAddCard" class="popup">
+      <div class="popup__container">
+        <h2 class="popup__edit-header">Новое место</h2>
+        <form id="formAdd" name="form-add">
+          <input class="popup__edit-input" id="inputAddName" name="formName" form="formAdd" type="text"
+            placeholder="Название">
+          <input class="popup__edit-input" id="inputAddLink" name="formText" form="formAdd" type="text"
+            placeholder="Ссылка на картинку">
+          <button class="popup__btn-save" type="submit">Создать</button>
+        </form>
+        <button class="popup__btn-close" type="button"></button>
+      </div>
+    </div>
+
+    <div id="popupCardImg" class="popup">
+      <figure class="popup__container-image">
+        <button class="popup__btn-close popup__btn-close_type_position" type="button"></button>
+        <img class="popup__image" src="#" alt="#">
+        <figcaption class="popup__image-name"></figcaption>
+      </figure>
+    </div>
   </div>
+
+  <template id="tempCard">
+    <article class="gallery__card">
+      <img class="gallery__card-img" src="#" alt="#">
+      <button class="gallery__btn-trash"></button>
+      <div class="gallery__card-header">
+        <h3 class="gallery__card-name"></h3>
+        <button class="gallery__btn-favorites" type="button"></button>
+      </div>
+    </article>
+  </template>
   <script src="./script/script.js"></script>
 </body>
 
