@@ -1,6 +1,5 @@
 const container = document.querySelector('.root');
 const profile = container.querySelector('.profile');
-
 // Обращение к форме вставки картинки
 const formAdd = container.querySelector('#formAdd');
 const btnProfileEdit = container.querySelector('.profile__btn-edit');
@@ -13,7 +12,6 @@ const inputDescription = container.querySelector('#inputEditText');
 
 const templateCard = document.querySelector('#tempCard').content;
 const gallery = container.querySelector('.gallery'); // место вставки карточек
-
 
 // функция вставки шаблона карточки из темплейта
 function renderCard(name, link) {
@@ -44,9 +42,10 @@ function printCards() {
 }
 
 // функция открытия/закрытия попапа
-function showHidePopup(el) {
-  el = container.querySelector('#'+el);
-  el.classList.toggle('popup_opened');
+function showHidePopup(popupName) {
+  popupName = container.querySelector('#' + popupName);
+  popupName.classList.toggle('popup_opened');
+  popupName.classList.toggle('popup_close');
 }
 
 // Функция добавления карточки через форму.
@@ -55,8 +54,9 @@ function submitFormAddCard(evt) {
   let newCardName = container.querySelector('#inputAddName').value;
   let newCardLink = container.querySelector('#inputAddLink').value;
 
+  // валидация
   if (!newCardName || !newCardLink) {
-    submitFormAddCard(evt);
+    submitFormAddCard(null);
   }
   gallery.prepend(renderCard(newCardName, newCardLink));
   showHidePopup('popupAddCard');
@@ -75,28 +75,25 @@ function submitFormEdit(evt) {
   profileDescription.textContent = inputDescription.value;
   showHidePopup('popupEdit');
 }
-container.querySelector('#popupEdit .popup__btn-close').addEventListener('click', function (){
+
+
+container.querySelector('#popupEdit .popup__btn-close').addEventListener('click', function () {
   showHidePopup('popupEdit');
 });
-container.querySelector('#popupAddCard .popup__btn-close').addEventListener('click', function (){
+container.querySelector('#popupAddCard .popup__btn-close').addEventListener('click', function () {
   showHidePopup('popupAddCard');
 });
-container.querySelector('#popupCardImg .popup__btn-close').addEventListener('click', function (){
+container.querySelector('#popupCardImg .popup__btn-close').addEventListener('click', function () {
   showHidePopup('popupCardImg');
 });
-container.querySelector('.profile__btn-add').addEventListener('click', function (){
+container.querySelector('.profile__btn-add').addEventListener('click', function () {
   showHidePopup('popupAddCard');
 });
 container.querySelector('.profile__btn-edit').addEventListener('click', function () {
   showHidePopup('popupEdit');
   copyTextPopupEdit();
 });
+
 container.querySelector('#formAdd').addEventListener('submit', submitFormAddCard);
 container.querySelector('#formEdit').addEventListener('submit', submitFormEdit);
-
 printCards();
-
-//===================================================
-
-
-
