@@ -1,14 +1,11 @@
 @keyframes move {
   0% {
+    visibility:hidden;
     opacity: 0;
-    display: none;
-  }
-  50% {
-  	opacity: 0.5;
   }
   100% {
+    visibility: visible;
     opacity: 1;
-    display: flex;
   }
 }
 
@@ -20,6 +17,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  animation: move 0.3s ease-out;
+  animation: move 0.3s linear forwards;
 }
 

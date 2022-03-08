@@ -1,4 +1,4 @@
-@keyframes moveback {
+/* @keyframes moveback {
   0% {
     opacity: 1;
     display: flex;
@@ -10,8 +10,19 @@
     opacity: 0;
     display: none;
   }
+} */
+
+@keyframes moveback {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
 }
 
 .popup_close {
-  animation: moveback 0.3s ease-out;
+  animation: moveback 0.5s linear forwards;
 }
