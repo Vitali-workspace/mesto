@@ -13,6 +13,13 @@ const inputDescription = container.querySelector('#inputEditText');
 const templateCard = document.querySelector('#tempCard').content;
 const gallery = container.querySelector('.gallery'); // место вставки карточек
 
+let newCardName = container.querySelector('#inputAddName');
+let newCardLink = container.querySelector('#inputAddLink');
+
+const popupEdit = container.querySelector('#popupEdit');
+const popupAddCard = container.querySelector('#popupAddCard');
+const popupCardImg = container.querySelector('#popupCardImg');
+
 // функция вставки шаблона карточки из темплейта
 function renderCard(name, link) {
   const templateCardContent = templateCard.querySelector('.gallery__card').cloneNode(true);
@@ -29,7 +36,7 @@ function renderCard(name, link) {
   templateCardContent.querySelector('.gallery__card-img').addEventListener('click', function () {
     container.querySelector('.popup__image').src = link;
     container.querySelector('.popup__image-name').textContent = name;
-    showHidePopup('popupCardImg');
+    showHidePopup(popupCardImg);
   });
   return templateCardContent;
 }
@@ -43,7 +50,6 @@ function printCards() {
 
 // функция открытия/закрытия попапа
 function showHidePopup(popupName) {
-  popupName = container.querySelector('#' + popupName);
   popupName.classList.toggle('popup_opened');
   popupName.classList.toggle('popup_close');
 }
@@ -51,15 +57,8 @@ function showHidePopup(popupName) {
 // Функция добавления карточки через форму.
 function submitFormAddCard(evt) {
   evt.preventDefault();
-  let newCardName = container.querySelector('#inputAddName').value;
-  let newCardLink = container.querySelector('#inputAddLink').value;
-
-  // валидация
-  if (!newCardName || !newCardLink) {
-    submitFormAddCard(null);
-  }
-  gallery.prepend(renderCard(newCardName, newCardLink));
-  showHidePopup('popupAddCard');
+  gallery.prepend(renderCard(newCardName.value, newCardLink.value));
+  showHidePopup(popupAddCard);
 }
 
 // Копирование текста из профиля в edit input
@@ -73,24 +72,24 @@ function submitFormEdit(evt) {
   //вставка значения из input в профиль
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
-  showHidePopup('popupEdit');
+  showHidePopup(popupEdit);
 }
 
 
 container.querySelector('#popupEdit .popup__btn-close').addEventListener('click', function () {
-  showHidePopup('popupEdit');
+  showHidePopup(popupEdit);
 });
 container.querySelector('#popupAddCard .popup__btn-close').addEventListener('click', function () {
-  showHidePopup('popupAddCard');
+  showHidePopup(popupAddCard);
 });
 container.querySelector('#popupCardImg .popup__btn-close').addEventListener('click', function () {
-  showHidePopup('popupCardImg');
+  showHidePopup(popupCardImg);
 });
 container.querySelector('.profile__btn-add').addEventListener('click', function () {
-  showHidePopup('popupAddCard');
+  showHidePopup(popupAddCard);
 });
 container.querySelector('.profile__btn-edit').addEventListener('click', function () {
-  showHidePopup('popupEdit');
+  showHidePopup(popupEdit);
   copyTextPopupEdit();
 });
 

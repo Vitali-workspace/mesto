@@ -9,3 +9,9 @@
     bottom: 2vh;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .popup__btn-close_type_position {
+    left: 92%;
+  }
+}
