@@ -27,36 +27,47 @@
     <footer class="footer">
       <p class="footer__copyright"> 2020 Mesto Russia</p>
     </footer>
-
-    <div id="popupEdit" class="popup popup_close">
+    <!-- popupEdit  -->
+    <div id="popupEdit" class="popup popup_close popup__overlay">
       <div class="popup__container">
         <h2 class="popup__edit-header">Редактировать профиль</h2>
-        <form id="formEdit" name="form-edit">
-          <input class="popup__edit-input" id="inputEditName" name="formName" form="formEdit" type="text"
-            placeholder="Имя" required>
-          <input class="popup__edit-input" id="inputEditText" name="formText" form="formEdit" type="text"
-            placeholder="О себе" required>
+        <form class="form" id="formEdit" name="form-edit" novalidate>
+          <section class="form__section" aria-label="имя">
+            <input class="popup__edit-input" id="inputEditName" name="formName" form="formEdit" type="text"
+              placeholder="Имя" minlength="2" maxlength="40" required>
+            <span class="popup__input-error">Вы пропустили это поле.</span>
+          </section>
+          <section class="form__section" aria-label="описание деятельности">
+            <input class="popup__edit-input" id="inputEditText" name="formText" form="formEdit" type="text"
+              placeholder="О себе" minlength="2" maxlength="200" required>
+            <span class="popup__input-error">Вы пропустили это поле.</span>
+          </section>
           <button class="popup__btn-save" type="submit">Сохранить</button>
         </form>
         <button class="popup__btn-close" type="button"></button>
       </div>
     </div>
-
-    <div id="popupAddCard" class="popup popup_close">
+    <!-- popupAddCard  -->
+    <div id="popupAddCard" class="popup popup_close popup__overlay">
       <div class="popup__container">
         <h2 class="popup__edit-header">Новое место</h2>
-        <form id="formAdd" name="form-add">
-          <input class="popup__edit-input" id="inputAddName" name="formName" form="formAdd" type="text"
-            placeholder="Название" required>
-          <input class="popup__edit-input" id="inputAddLink" name="formText" form="formAdd" type="text"
-            placeholder="Ссылка на картинку" required>
+        <form class="form" id="formAdd" name="form-add" novalidate>
+          <section class="form__section" aria-label="название места">
+            <input class="popup__edit-input" id="inputAddName" name="formName" form="formAdd" type="text"
+              placeholder="Название" minlength="2" maxlength="30" required>
+            <span class="popup__input-error">Вы пропустили это поле.</span>
+          </section>
+          <section class="form__section" aria-label="ссылка на картинку">
+            <input class="popup__edit-input" id="inputAddLink" name="formText" form="formAdd" type="url"
+              placeholder="Ссылка на картинку" required>
+            <span class="popup__input-error">Введите адрес сайта.</span>
+          </section>
           <button class="popup__btn-save" type="submit">Создать</button>
         </form>
         <button class="popup__btn-close" type="button"></button>
       </div>
     </div>
-
-    <div id="popupCardImg" class="popup popup_close">
+    <div id="popupCardImg" class="popup popup_close popup__overlay">
       <figure class="popup__container-image">
         <button class="popup__btn-close popup__btn-close_type_position" type="button"></button>
         <img class="popup__image" src="#" alt="#">
@@ -75,6 +86,7 @@
       </div>
     </article>
   </template>
+  <script src="./script/validate.js"></script>
   <script src="./script/cards.js"></script>
   <script src="./script/script.js"></script>
 </body>
