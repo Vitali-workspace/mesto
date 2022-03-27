@@ -16,7 +16,7 @@ let newCardLink = container.querySelector('#inputAddLink');
 const popupEdit = container.querySelector('#popupEdit');
 const popupAddCard = container.querySelector('#popupAddCard');
 const popupCardImg = container.querySelector('#popupCardImg');
-const popupOverlay = container.querySelectorAll('.popup__overlay');
+const popupOverlay = container.querySelectorAll('.popup_overlay');
 
 // функция вставки шаблона карточки из темплейта
 function renderCard(name, link) {
