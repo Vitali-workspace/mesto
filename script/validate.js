@@ -1,27 +1,27 @@
-const ObjElements = {
+const objElements = {
   // объект пока не используется
-  formSelector: '.popup__form', // аналог .form
-  inputSelector: '.popup__input', // .popup__edit-input
-  submitButtonSelector: '.popup__button', // .popup__btn-save
-  inactiveButtonClass: 'popup__button_disabled', // popup_btn-disable
-  inputErrorClass: 'popup__input_type_error', // popup__input-error
-  errorClass: 'popup__error_visible'// popup__input-error_active
+  formSelector: '.form__section', // аналог .form
+  inputSelector: '.popup__edit-input', // .popup__edit-input
+  submitButtonSelector: '.popup__btn-save', // .popup__btn-save
+  inactiveButtonClass: 'popup_btn-disable', // popup_btn-disable
+  inputErrorSelector: '.popup__input-error', // popup__input-error
+  errorClass: 'popup__input-error_active'// popup__input-error_active
 }
 
 
 function getErorrMessage(input) {
   // Функция поиска ближайшой формы-секции что бы от неё найти span с ошибкой
-  return input.closest('.form__section').querySelector('.popup__input-error');
+  return input.closest(objElements.formSelector).querySelector(objElements.inputErrorSelector);
 }
 
 const showInputError = (input) => {
   const errorInput = getErorrMessage(input);
-  errorInput.classList.add('popup__input-error_active');
+  errorInput.classList.add(objElements.errorClass);
 };
 
 const hideInputError = (input) => {
   const errorInput = getErorrMessage(input);
-  errorInput.classList.remove('popup__input-error_active');
+  errorInput.classList.remove(objElements.errorClass);
 };
 
 const checkInputValidity = (input) => {
@@ -36,9 +36,9 @@ const checkInputValidity = (input) => {
 };
 
 const setEventListeners = (form) => {
-  const submitBtn = form.querySelector('.popup__btn-save');
-  const newListInput = form.querySelectorAll('.popup__edit-input');
-  const inputsList = Array.from(newListInput);
+  const submitBtn = form.querySelector(objElements.submitButtonSelector);
+  const searchInputsList = form.querySelectorAll(objElements.inputSelector);
+  const inputsList = Array.from(searchInputsList);
 
   inputsList.forEach((input) => {
     // обработчик на ввод данных в input
@@ -67,10 +67,10 @@ function toggleButtonState(inputsList, submitBtn) {
   });
 
   if (hasInvalidInput) {
-    submitBtn.classList.add('popup_btn-disable');
+    submitBtn.classList.add(objElements.inactiveButtonClass);
     submitBtn.setAttribute('disabled', true);
   } else {
-    submitBtn.classList.remove('popup_btn-disable');
+    submitBtn.classList.remove(objElements.inactiveButtonClass);
     submitBtn.removeAttribute('disabled');
   }
 }
