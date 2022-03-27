@@ -10,13 +10,15 @@ const inputDescription = container.querySelector('#inputEditText');
 const templateCard = document.querySelector('#tempCard').content;
 const gallery = container.querySelector('.gallery'); // место вставки карточек
 
-let newCardName = container.querySelector('#inputAddName');
-let newCardLink = container.querySelector('#inputAddLink');
+const newCardName = container.querySelector('#inputAddName');
+const newCardLink = container.querySelector('#inputAddLink');
 
 const popupEdit = container.querySelector('#popupEdit');
 const popupAddCard = container.querySelector('#popupAddCard');
 const popupCardImg = container.querySelector('#popupCardImg');
-const popupOverlay = container.querySelectorAll('.popup_overlay');
+
+const popupImage = container.querySelector('.popup__image');
+const popupImageName = container.querySelector('.popup__image-name');
 
 // функция вставки шаблона карточки из темплейта
 function renderCard(name, link) {
@@ -32,9 +34,10 @@ function renderCard(name, link) {
   });
   // открытие попапа картинки
   templateCardContent.querySelector('.gallery__card-img').addEventListener('click', function () {
-    container.querySelector('.popup__image').src = link;
-    container.querySelector('.popup__image-name').textContent = name;
-    showHidePopup(popupCardImg);
+    popupImage.src = link;
+    popupImage.alt = name;
+    popupImageName.textContent = name;
+    showPopup(popupCardImg);
   });
   return templateCardContent;
 }
@@ -46,35 +49,45 @@ function printCards() {
   });
 }
 
-// функция открытия/закрытия попапа
-function showHidePopup(popupName) {
-  popupName.classList.toggle('popup_opened');
-  popupName.classList.toggle('popup_close'); // анимация закрытия попапа
-  listenerEscape(popupName);
-
+function closePopupEscAndOverlay() {
+  // функция поиска открытого попапа
+  const openedPopup = document.querySelector('.popup_opened');
+  closePopup(openedPopup);
 }
 
-
-function listenerEscape(popupName) {
-  // функция подключения и отключения обработчика по Esc
-  if (popupName.classList.contains('popup_opened')) {
-    window.addEventListener('keydown', function (evt) {
-      if (evt.key === 'Escape') {
-        if (container.querySelector('.popup_opened')) {
-          showHidePopup(container.querySelector('.popup_opened'));
-        }
-      }
-    });
-  } else {
-    window.removeEventListener('keydown', this);
+function closePopupOnEsc(evt) {
+  if (evt.key === 'Escape') {
+    closePopupEscAndOverlay();
   }
+}
+
+function closePopupOnOverlay(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopupEscAndOverlay();
+  }
+}
+
+function showPopup(popupName) {
+  popupName.classList.toggle('popup_opened');
+  popupName.classList.toggle('popup_close'); // анимация закрытия попапа
+  // событие на оверлей
+  popupName.addEventListener('mousedown', closePopupOnOverlay);
+  document.addEventListener('keydown', closePopupOnEsc);
+}
+
+function closePopup(popupName) {
+  popupName.classList.toggle('popup_opened');
+  popupName.classList.toggle('popup_close');
+  // событие на оверлей
+  popupName.removeEventListener('mousedown', closePopupOnOverlay);
+  document.removeEventListener('keydown', closePopupOnEsc);
 }
 
 // Функция добавления карточки через форму.
 function submitFormAddCard(evt) {
   evt.preventDefault();
   gallery.prepend(renderCard(newCardName.value, newCardLink.value));
-  showHidePopup(popupAddCard);
+  closePopup(popupAddCard);
 }
 
 // Копирование текста из профиля в edit input
@@ -88,42 +101,26 @@ function submitFormEdit(evt) {
   //вставка значения из input в профиль
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
-  showHidePopup(popupEdit);
+  closePopup(popupEdit);
 }
 
-
 container.querySelector('#popupEdit .popup__btn-close').addEventListener('click', function () {
-  showHidePopup(popupEdit);
+  closePopup(popupEdit);
 });
 
 container.querySelector('#popupAddCard .popup__btn-close').addEventListener('click', function () {
-  showHidePopup(popupAddCard);
+  closePopup(popupAddCard);
 });
 container.querySelector('#popupCardImg .popup__btn-close').addEventListener('click', function () {
-  showHidePopup(popupCardImg);
+  closePopup(popupCardImg);
 });
 
 container.querySelector('.profile__btn-add').addEventListener('click', function () {
-  showHidePopup(popupAddCard);
-  // запуск валидации
-  enableValidation(popupAddCard);
+  showPopup(popupAddCard);
 });
 container.querySelector('.profile__btn-edit').addEventListener('click', function () {
-  showHidePopup(popupEdit);
+  showPopup(popupEdit);
   copyTextPopupEdit();
-  enableValidation(popupEdit);
-});
-
-
-// функция закрытия попапа по оверлею
-popupOverlay.forEach((overlay) => {
-  overlay.addEventListener('mousedown', function (evt) {
-    if (evt.target === evt.currentTarget) {
-      // ищет ближайший открытый попап
-      const namePopup = evt.target.closest('.popup');
-      showHidePopup(namePopup);
-    }
-  });
 });
 
 container.querySelector('#formAdd').addEventListener('submit', submitFormAddCard);
