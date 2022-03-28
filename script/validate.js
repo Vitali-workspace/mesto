@@ -7,20 +7,13 @@ const objElements = {
   errorClass: 'popup__input-error_active'
 }
 
-function getErorrMessage(input, objElements) {
-  // Функция поиска ближайшой формы-секции что бы от неё найти span с ошибкой
-  return input.closest(objElements.formSelector).querySelector(objElements.inputErrorSelector);
-}
-
 const showInputError = (form, input, objElements) => {
-  const errorInput = getErorrMessage(input, objElements);
-  //const errorInput = form.querySelector(`#${input.id}-error`);
+  const errorInput = form.querySelector(`#${input.id}-error`);
   errorInput.classList.add(objElements.errorClass);
 };
 
 const hideInputError = (form, input, objElements) => {
-  const errorInput = getErorrMessage(input, objElements);
-  //const errorInput = form.querySelector(`#${input.id}-error`);
+  const errorInput = form.querySelector(`#${input.id}-error`);
   errorInput.classList.remove(objElements.errorClass);
 };
 
@@ -37,12 +30,11 @@ const checkInputValidity = (form, input, objElements) => {
 
 const setEventListeners = (form, objElements) => {
   const submitBtn = form.querySelector(objElements.submitButtonSelector);
-  const searchInputsList = form.querySelectorAll(objElements.inputSelector);
-  const inputsList = Array.from(searchInputsList);
+  const inputsList = Array.from(form.querySelectorAll(objElements.inputSelector));
 
   inputsList.forEach((input) => {
     //обработчик на ввод данных в input
-    input.addEventListener('input', function () {
+    input.addEventListener('input', () => {
       checkInputValidity(form, input, objElements);
       toggleButtonState(inputsList, submitBtn, objElements);
     });
