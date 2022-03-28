@@ -87,6 +87,9 @@ function closePopup(popupName) {
 function submitFormAddCard(evt) {
   evt.preventDefault();
   gallery.prepend(renderCard(newCardName.value, newCardLink.value));
+  // очищение полей после добавления карточек
+  newCardName.value = "";
+  newCardLink.value = "";
   closePopup(popupAddCard);
 }
 
