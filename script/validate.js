@@ -32,6 +32,8 @@ const setEventListeners = (form, objElements) => {
   const submitBtn = form.querySelector(objElements.submitButtonSelector);
   const inputsList = Array.from(form.querySelectorAll(objElements.inputSelector));
 
+  toggleButtonState(inputsList, submitBtn, objElements);
+
   inputsList.forEach((input) => {
     //обработчик на ввод данных в input
     input.addEventListener('input', () => {
@@ -40,7 +42,7 @@ const setEventListeners = (form, objElements) => {
     });
   });
   // устанавка состояния сабмита на момент первого открытия попапа
-  toggleButtonState(inputsList, submitBtn, objElements);
+
 };
 
 // Функция запуска валидации

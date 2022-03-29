@@ -12,6 +12,8 @@ const gallery = container.querySelector('.gallery'); // место вставк�
 
 const newCardName = container.querySelector('#inputAddName');
 const newCardLink = container.querySelector('#inputAddLink');
+const formAddCard = container.querySelector('#formAdd');
+const btnSubmitAddCard = formAddCard.querySelector('.popup__btn-save');
 
 const popupEdit = container.querySelector('#popupEdit');
 const popupAddCard = container.querySelector('#popupAddCard');
@@ -91,6 +93,9 @@ function submitFormAddCard(evt) {
   newCardName.value = "";
   newCardLink.value = "";
   closePopup(popupAddCard);
+  // диактивация кнопки сабмита после добавления карточки
+  btnSubmitAddCard.classList.add('popup_btn-disable');
+  btnSubmitAddCard.setAttribute('disabled', true);
 }
 
 // Копирование текста из профиля в edit input
@@ -126,6 +131,6 @@ container.querySelector('.profile__btn-edit').addEventListener('click', function
   copyTextPopupEdit();
 });
 
-container.querySelector('#formAdd').addEventListener('submit', submitFormAddCard);
+formAddCard.addEventListener('submit', submitFormAddCard);
 container.querySelector('#formEdit').addEventListener('submit', submitFormEdit);
 printCards();
