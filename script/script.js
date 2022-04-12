@@ -1,3 +1,5 @@
+import { FormValidator } from '.FormValidator';
+
 const container = document.querySelector('.root');
 const profile = container.querySelector('.profile');
 // обращение к тексту в профиле
@@ -21,6 +23,27 @@ const popupCardImg = container.querySelector('#popupCardImg');
 
 const popupImage = container.querySelector('.popup__image');
 const popupImageName = container.querySelector('.popup__image-name');
+
+const objElements = {
+  formSelector: '.form',
+  inputSelector: '.popup__edit-input',
+  submitButtonSelector: '.popup__btn-save',
+  inactiveButtonClass: 'popup_btn-disable',
+  inputErrorSelector: '.popup__input-error',
+  errorClass: 'popup__input-error_active'
+}
+
+// тут наверное нужно обратиться к id нужной формы // но пока через класс
+const form1 = document.querySelector('#formEdit');
+const form2 = document.querySelector('#formAdd');
+
+// formValidatorProfile
+const validFormEdit = new FormValidator(objElements, form1);
+
+// formValidatorAddCard
+const validFormAddCard = new FormValidator(objElements, form2);
+
+
 
 // функция вставки шаблона карточки из темплейта
 function renderCard(name, link) {
@@ -134,3 +157,18 @@ container.querySelector('.profile__btn-edit').addEventListener('click', function
 formAddCard.addEventListener('submit', submitFormAddCard);
 container.querySelector('#formEdit').addEventListener('submit', submitFormEdit);
 printCards();
+
+
+
+
+
+
+// class FormValidator {
+//   constructor() {
+
+//   }
+
+//   enableValidation() { }
+// }
+
+

@@ -54,7 +54,7 @@ function enableValidation(objElements) {
   forms.forEach(formListHandler);
 }
 
-enableValidation(objElements);
+//enableValidation(objElements); //================ Выключил валидацию
 
 function toggleButtonState(inputsList, submitBtn, objElements) {
   // функция включения/отключения сабмита
