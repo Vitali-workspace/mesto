@@ -1,10 +1,8 @@
 export class FormValidator {
-  constructor(parametersValidator, form) {
+  constructor(parametersValidator, formElement) {
 
-    this._form = form;
+    this._form = formElement;
     this._parametersValidator = parametersValidator;
-
-    // возможно не нужна тут деструкторизация
     const { submitButtonSelector, inputSelector } = this._parametersValidator;
     this._submitBtn = this._form.querySelector(submitButtonSelector);
     this._inputsList = Array.from(this._form.querySelectorAll(inputSelector));
@@ -31,8 +29,6 @@ export class FormValidator {
   };
 
   _setEventListeners() {
-    // Деструкторизация которую надо потом расширить
-
     this._inputsList.forEach((input) => {
       //обработчик на ввод данных в input
       input.addEventListener('input', () => {
@@ -40,21 +36,17 @@ export class FormValidator {
         this._toggleButtonState();
       });
     });
-
     // устанавка состояния сабмита на момент первого открытия попапа
-    this._toggleButtonState(parametersValidator); // ======== наверно не нужно
+    this._toggleButtonState();
   }
-
 
   enableValidation() {
     this._setEventListeners();
-    //======= Наверное стоит перенести сюда отключение стандартного поведения формы
   }
 
   _toggleButtonState() {
     // функция включения/отключения сабмита
     const hasInvalidInput = this._inputsList.some((inputElement) => {
-      // проверка массива инпутов на валидность полей
       return !inputElement.validity.valid;
     });
 
@@ -66,10 +58,4 @@ export class FormValidator {
       this._submitBtn.removeAttribute('disabled');
     }
   }
-
-  //=============== this.enableValidation();
 }
-
-
-
-
