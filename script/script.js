@@ -4,10 +4,8 @@ import { Card } from './Card.js';
 
 const container = document.querySelector('.root');
 const profile = container.querySelector('.profile');
-// обращение к тексту в профиле
 const profileName = profile.querySelector('.profile__name');
 const profileDescription = profile.querySelector('.profile__description');
-// обращение к инпутам из формы Edit
 const inputName = container.querySelector('#inputEditName');
 const inputDescription = container.querySelector('#inputEditText');
 
@@ -19,12 +17,10 @@ const newCardLink = container.querySelector('#inputAddLink');
 
 const formAddCard = container.querySelector('#formAdd');
 const formEdit = document.querySelector('#formEdit');
-const btnSubmitAddCard = formAddCard.querySelector('.popup__btn-save');
 
 const popupEdit = container.querySelector('#popupEdit');
 const popupAddCard = container.querySelector('#popupAddCard');
 
-// для попапа с картинками
 const popupCardImg = container.querySelector('#popupCardImg');
 const popupImage = container.querySelector('.popup__image');
 const popupImageName = container.querySelector('.popup__image-name');
@@ -44,8 +40,8 @@ validFormEdit.enableValidation();
 validFormAddCard.enableValidation();
 
 
-function getReadyCard(startingСard) {
-  const newBuildCard = new Card(startingСard, templateCard);
+function getReadyCard(parametersCard) {
+  const newBuildCard = new Card(parametersCard, templateCard);
   return newBuildCard.createTemplateCard();
 }
 
@@ -95,13 +91,11 @@ function submitFormAddCard(evt) {
     name: newCardName.value,
     link: newCardLink.value
   }
-  const buildCard = new Card(newCard, templateCard);
-  gallery.prepend(buildCard.createTemplateCard());
+
+  gallery.prepend(getReadyCard(newCard));
   formAddCard.reset();
   closePopup(popupAddCard);
-  // диактивация кнопки сабмита после добавления карточки
-  btnSubmitAddCard.classList.add('popup_btn-disable');
-  btnSubmitAddCard.setAttribute('disabled', true);
+  validFormAddCard.disabledSubmitAddCard();
 }
 
 // Копирование текста из профиля в edit input
@@ -112,7 +106,6 @@ function copyTextPopupEdit() {
 
 function submitFormEdit(evt) {
   evt.preventDefault();
-  //вставка значения из input в профиль
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
   closePopup(popupEdit);
@@ -141,4 +134,4 @@ formAddCard.addEventListener('submit', submitFormAddCard);
 container.querySelector('#formEdit').addEventListener('submit', submitFormEdit);
 printCards();
 
-export { popupCardImg, showPopup };
+export { popupImage, popupImageName, popupCardImg, showPopup };

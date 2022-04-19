@@ -30,7 +30,6 @@ export class FormValidator {
 
   _setEventListeners() {
     this._inputsList.forEach((input) => {
-      //обработчик на ввод данных в input
       input.addEventListener('input', () => {
         this._checkInputValidity(input);
         this._toggleButtonState();
@@ -45,17 +44,20 @@ export class FormValidator {
   }
 
   _toggleButtonState() {
-    // функция включения/отключения сабмита
     const hasInvalidInput = this._inputsList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
 
     if (hasInvalidInput) {
-      this._submitBtn.classList.add(this._parametersValidator.inactiveButtonClass);
-      this._submitBtn.setAttribute('disabled', true);
+      this.disabledSubmitAddCard();
     } else {
       this._submitBtn.classList.remove(this._parametersValidator.inactiveButtonClass);
       this._submitBtn.removeAttribute('disabled');
     }
+  }
+
+  disabledSubmitAddCard() {
+    this._submitBtn.classList.add(this._parametersValidator.inactiveButtonClass);
+    this._submitBtn.setAttribute('disabled', true);
   }
 }
