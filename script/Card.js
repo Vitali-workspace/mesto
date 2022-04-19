@@ -38,9 +38,7 @@ class Card {
   _setEventListeners() {
     this._templateCardContent.querySelector('.gallery__btn-favorites').addEventListener('click', this._btnFavorites);
     this._templateCardContent.querySelector('.gallery__btn-trash').addEventListener('click', this._btnTrash);
-    this._templateCardContent.querySelector('.gallery__card-img').addEventListener('click', () => {
-      this._openImagePopup(this._linkCard, this._nameCard, this._popupImageName);
-    });
+    this._templateCardContent.querySelector('.gallery__card-img').addEventListener('click', () => this._openImagePopup());
   }
 }
 
