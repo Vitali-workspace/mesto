@@ -24,3 +24,5 @@ const initialCards = [
     link: 'https://cdn.pixabay.com/photo/2022/02/17/07/51/church-7018154_960_720.jpg'
   }
 ];
+
+export { initialCards };

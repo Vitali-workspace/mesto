@@ -16,7 +16,7 @@ class Card {
     this._templateCardContent.querySelector('.gallery__card-img').src = `${this._linkCard}`;
     this._templateCardContent.querySelector('.gallery__card-img').alt = `${this._nameCard}`;
     this._setEventListeners();
-    return this._templateCardContent; // Отправляет готовую карточку
+    return this._templateCardContent;
   }
 
   _btnFavorites() {

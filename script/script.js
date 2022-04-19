@@ -1,4 +1,6 @@
-import { FormValidator } from '.FormValidator';
+import { initialCards } from './cards.js';
+import { FormValidator } from './FormValidator.js';
+import { Card } from './Card.js';
 
 const container = document.querySelector('.root');
 const profile = container.querySelector('.profile');
@@ -14,13 +16,16 @@ const gallery = container.querySelector('.gallery'); // место вставк�
 
 const newCardName = container.querySelector('#inputAddName');
 const newCardLink = container.querySelector('#inputAddLink');
+
 const formAddCard = container.querySelector('#formAdd');
+const formEdit = document.querySelector('#formEdit');
 const btnSubmitAddCard = formAddCard.querySelector('.popup__btn-save');
 
 const popupEdit = container.querySelector('#popupEdit');
 const popupAddCard = container.querySelector('#popupAddCard');
-const popupCardImg = container.querySelector('#popupCardImg');
 
+// для попапа с картинками
+const popupCardImg = container.querySelector('#popupCardImg');
 const popupImage = container.querySelector('.popup__image');
 const popupImageName = container.querySelector('.popup__image-name');
 
@@ -33,49 +38,26 @@ const objElements = {
   errorClass: 'popup__input-error_active'
 }
 
-// тут наверное нужно обратиться к id нужной формы // но пока через класс
-const form1 = document.querySelector('#formEdit');
-const form2 = document.querySelector('#formAdd');
-
-// formValidatorProfile
-const validFormEdit = new FormValidator(objElements, form1);
-
-// formValidatorAddCard
-const validFormAddCard = new FormValidator(objElements, form2);
+const validFormEdit = new FormValidator(objElements, formEdit);
+const validFormAddCard = new FormValidator(objElements, formAddCard);
+validFormEdit.enableValidation();
+validFormAddCard.enableValidation();
 
 
-
-// функция вставки шаблона карточки из темплейта
-function renderCard(name, link) {
-  const templateCardContent = templateCard.querySelector('.gallery__card').cloneNode(true);
-  templateCardContent.querySelector('.gallery__card-name').textContent = `${name}`;
-  templateCardContent.querySelector('.gallery__card-img').src = `${link}`;
-  templateCardContent.querySelector('.gallery__card-img').alt = `${name}`;
-  templateCardContent.querySelector('.gallery__btn-favorites').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('gallery__btn-favorites_active');
-  });
-  templateCardContent.querySelector('.gallery__btn-trash').addEventListener('click', function (evt) {
-    evt.target.closest('.gallery__card').remove();
-  });
-  // открытие попапа картинки
-  templateCardContent.querySelector('.gallery__card-img').addEventListener('click', function () {
-    popupImage.src = link;
-    popupImage.alt = name;
-    popupImageName.textContent = name;
-    showPopup(popupCardImg);
-  });
-  return templateCardContent;
+function getReadyCard(startingСard) {
+  const newBuildCard = new Card(startingСard, templateCard);
+  return newBuildCard.createTemplateCard();
 }
 
-// отрисовка карточек
+// отрисовка начальных карточек
 function printCards() {
-  initialCards.forEach(function (card) {
-    gallery.prepend(renderCard(card.name, card.link));
+  initialCards.forEach(function (startingСard) {
+    const resultCard = getReadyCard(startingСard);
+    gallery.prepend(resultCard);
   });
 }
 
 function closePopupEscAndOverlay() {
-  // функция поиска открытого попапа
   const openedPopup = document.querySelector('.popup_opened');
   closePopup(openedPopup);
 }
@@ -94,8 +76,7 @@ function closePopupOnOverlay(evt) {
 
 function showPopup(popupName) {
   popupName.classList.toggle('popup_opened');
-  popupName.classList.toggle('popup_close'); // анимация закрытия попапа
-  // событие на оверлей
+  popupName.classList.toggle('popup_close');
   popupName.addEventListener('mousedown', closePopupOnOverlay);
   document.addEventListener('keydown', closePopupOnEsc);
 }
@@ -103,7 +84,6 @@ function showPopup(popupName) {
 function closePopup(popupName) {
   popupName.classList.toggle('popup_opened');
   popupName.classList.toggle('popup_close');
-  // событие на оверлей
   popupName.removeEventListener('mousedown', closePopupOnOverlay);
   document.removeEventListener('keydown', closePopupOnEsc);
 }
@@ -111,10 +91,13 @@ function closePopup(popupName) {
 // Функция добавления карточки через форму.
 function submitFormAddCard(evt) {
   evt.preventDefault();
-  gallery.prepend(renderCard(newCardName.value, newCardLink.value));
-  // очищение полей после добавления карточек
-  newCardName.value = "";
-  newCardLink.value = "";
+  const newCard = {
+    name: newCardName.value,
+    link: newCardLink.value
+  }
+  const buildCard = new Card(newCard, templateCard);
+  gallery.prepend(buildCard.createTemplateCard());
+  formAddCard.reset();
   closePopup(popupAddCard);
   // диактивация кнопки сабмита после добавления карточки
   btnSubmitAddCard.classList.add('popup_btn-disable');
@@ -158,17 +141,4 @@ formAddCard.addEventListener('submit', submitFormAddCard);
 container.querySelector('#formEdit').addEventListener('submit', submitFormEdit);
 printCards();
 
-
-
-
-
-
-// class FormValidator {
-//   constructor() {
-
-//   }
-
-//   enableValidation() { }
-// }
-
-
+export { popupCardImg, showPopup };
