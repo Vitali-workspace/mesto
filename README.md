@@ -19,5 +19,7 @@
 
 **7.** Всё поля в форме валидируются одновременно.
 
+**8.** Код написан с применением ООП.
+
 ## Ссылка на GitHub Pages
 https://vitali-workspace.github.io/mesto-p4-public/index.html
