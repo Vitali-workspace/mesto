@@ -1,6 +1,7 @@
 import { initialCards } from './cards.js';
 import { FormValidator } from './FormValidator.js';
 import { Card } from './Card.js';
+import { Section } from './Section.js';
 
 const container = document.querySelector('.root');
 const profile = container.querySelector('.profile');
@@ -45,13 +46,18 @@ function getReadyCard(parametersCard) {
   return newBuildCard.createTemplateCard();
 }
 
-// отрисовка начальных карточек
-function printCards() {
-  initialCards.forEach(function (startingСard) {
-    const resultCard = getReadyCard(startingСard);
-    gallery.prepend(resultCard);
-  });
-}
+const printCards = new Section(
+  {
+    items: initialCards,
+    renderer: (element) => {
+      const elementCard = getReadyCard(element);
+      printCards.addItem(elementCard);
+    }
+  },
+  gallery);
+
+printCards.printElement();
+
 
 function closePopupEscAndOverlay() {
   const openedPopup = document.querySelector('.popup_opened');
@@ -92,7 +98,7 @@ function submitFormAddCard(evt) {
     link: newCardLink.value
   }
 
-  gallery.prepend(getReadyCard(newCard));
+  printCards.addItem(getReadyCard(newCard));
   formAddCard.reset();
   closePopup(popupAddCard);
   validFormAddCard.disabledSubmitAddCard();
@@ -132,6 +138,6 @@ container.querySelector('.profile__btn-edit').addEventListener('click', function
 
 formAddCard.addEventListener('submit', submitFormAddCard);
 container.querySelector('#formEdit').addEventListener('submit', submitFormEdit);
-printCards();
+
 
 export { popupImage, popupImageName, popupCardImg, showPopup };
