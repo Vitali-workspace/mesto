@@ -9,14 +9,12 @@ class Popup {
     this._searchOpenedPopup.classList.toggle('popup_opened');
     this._searchOpenedPopup.classList.toggle('popup_close'); // анимация попапа
     document.addEventListener('keydown', this._handleEscClose);
-    this._searchOpenedPopup.addEventListener('mousedown', (evt) => this._closePopupOnOverlay(evt));
   }
 
   close() {
     this._searchOpenedPopup.classList.toggle('popup_opened');
     this._searchOpenedPopup.classList.toggle('popup_close');
     document.removeEventListener('keydown', this._handleEscClose);
-    this._searchOpenedPopup.removeEventListener('mousedown', (evt) => this._closePopupOnOverlay(evt));
   }
 
   _handleEscClose(evt) {
@@ -33,6 +31,7 @@ class Popup {
 
   setEventListeners() {
     this._buttonPopupClose.addEventListener('click', () => this.close());
+    this._searchOpenedPopup.addEventListener('mousedown', (evt) => this._closePopupOnOverlay(evt));
   }
 }
 
