@@ -1,7 +1,8 @@
-import { popupImage, popupImageName, popupCardImg, showPopup } from "./script.js";
+import { popupImage, popupImageName, popupCardImg } from "./script.js";
 
 class Card {
-  constructor(newCard, selectorTemplateCard) {
+  constructor(newCard, handleCardClick, selectorTemplateCard) {
+    this._handleCardClick = handleCardClick;
     this._nameCard = newCard.name;
     this._linkCard = newCard.link;
     this._popupImageName = popupImageName;
@@ -29,10 +30,11 @@ class Card {
   }
 
   _openImagePopup() {
+    console.log('клик по картинке работает');
     popupImage.src = `${this._linkCard}`;
     popupImage.alt = `${this._nameCard}`;
     this._popupImageName.textContent = `${this._nameCard}`;
-    showPopup(popupCardImg);
+    this._handleCardClick(this._nameCard, this._linkCard);
   }
 
   _setEventListeners() {
