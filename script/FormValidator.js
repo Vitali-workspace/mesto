@@ -60,4 +60,10 @@ export class FormValidator {
     this._submitBtn.classList.add(this._parametersValidator.inactiveButtonClass);
     this._submitBtn.setAttribute('disabled', true);
   }
+
+  resetInputErorr() {
+    this._inputsList.forEach((input) => {
+      this._hideInputError(input);
+    });
+  }
 }
