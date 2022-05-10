@@ -2,16 +2,19 @@ import { initialCards } from './cards.js';
 import { FormValidator } from './FormValidator.js';
 import { Card } from './Card.js';
 import { Section } from './Section.js';
+import { PopupWithForm } from './PopupWithForm.js';
+import { PopupWithImage } from './PopupWithImage.js';
+import { UserInfo } from './UserInfo.js';
 
 const container = document.querySelector('.root');
-const profile = container.querySelector('.profile');
-const profileName = profile.querySelector('.profile__name');
-const profileDescription = profile.querySelector('.profile__description');
-const inputName = container.querySelector('#inputEditName');
-const inputDescription = container.querySelector('#inputEditText');
+//const profile = container.querySelector('.profile'); // вроде не нужен
+let profileName = document.querySelector('.profile__name');
+let profileDescription = document.querySelector('.profile__description');
+const inputName = document.querySelector('#inputEditName');
+const inputDescription = document.querySelector('#inputEditText');
 
 const templateCard = document.querySelector('#tempCard').content;
-const gallery = container.querySelector('.gallery'); // место вставки карточек
+const gallery = container.querySelector('.gallery');
 
 const newCardName = container.querySelector('#inputAddName');
 const newCardLink = container.querySelector('#inputAddLink');
@@ -40,11 +43,17 @@ const validFormAddCard = new FormValidator(objElements, formAddCard);
 validFormEdit.enableValidation();
 validFormAddCard.enableValidation();
 
+// отвечает за открытие картинки в попапе
+function handleCardClick(name, link) {
+  popupWithImage.open(name, link);
+}
 
 function getReadyCard(parametersCard) {
-  const newBuildCard = new Card(parametersCard, templateCard);
+  const newBuildCard = new Card(parametersCard, handleCardClick, templateCard);
   return newBuildCard.createTemplateCard();
 }
+
+const userProfile = new UserInfo({ name: '.profile__name', description: '.profile__description' });
 
 const printCards = new Section(
   {
@@ -53,91 +62,50 @@ const printCards = new Section(
       const elementCard = getReadyCard(element);
       printCards.addItem(elementCard);
     }
-  },
-  gallery);
-
-printCards.printElement();
+  }, gallery);
 
 
-function closePopupEscAndOverlay() {
-  const openedPopup = document.querySelector('.popup_opened');
-  closePopup(openedPopup);
-}
-
-function closePopupOnEsc(evt) {
-  if (evt.key === 'Escape') {
-    closePopupEscAndOverlay();
-  }
-}
-
-function closePopupOnOverlay(evt) {
-  if (evt.target === evt.currentTarget) {
-    closePopupEscAndOverlay();
-  }
-}
-
-function showPopup(popupName) {
-  popupName.classList.toggle('popup_opened');
-  popupName.classList.toggle('popup_close');
-  popupName.addEventListener('mousedown', closePopupOnOverlay);
-  document.addEventListener('keydown', closePopupOnEsc);
-}
-
-function closePopup(popupName) {
-  popupName.classList.toggle('popup_opened');
-  popupName.classList.toggle('popup_close');
-  popupName.removeEventListener('mousedown', closePopupOnOverlay);
-  document.removeEventListener('keydown', closePopupOnEsc);
-}
-
-// Функция добавления карточки через форму.
-function submitFormAddCard(evt) {
-  evt.preventDefault();
+function valueField() {
+  // придумать красивее название
   const newCard = {
     name: newCardName.value,
     link: newCardLink.value
   }
+  const elementCard = getReadyCard(newCard);
+  console.log(elementCard);
 
-  printCards.addItem(getReadyCard(newCard));
-  formAddCard.reset();
-  closePopup(popupAddCard);
+  printCards.addItem(elementCard);
   validFormAddCard.disabledSubmitAddCard();
 }
 
-// Копирование текста из профиля в edit input
-function copyTextPopupEdit() {
-  inputName.value = profileName.textContent;
-  inputDescription.value = profileDescription.textContent;
-}
 
-function submitFormEdit(evt) {
-  evt.preventDefault();
-  profileName.textContent = inputName.value;
-  profileDescription.textContent = inputDescription.value;
-  closePopup(popupEdit);
-}
+const popupWithFormAdd = new PopupWithForm(popupAddCard, valueField);
 
-container.querySelector('#popupEdit .popup__btn-close').addEventListener('click', function () {
-  closePopup(popupEdit);
-});
+popupWithFormAdd.setEventListeners();
 
-container.querySelector('#popupAddCard .popup__btn-close').addEventListener('click', function () {
-  closePopup(popupAddCard);
+const popupWithFormProfile = new PopupWithForm(popupEdit, () => {
+  userProfile.setUserInfo(inputName, inputDescription);
 });
-container.querySelector('#popupCardImg .popup__btn-close').addEventListener('click', function () {
-  closePopup(popupCardImg);
-});
+popupWithFormProfile.setEventListeners();
+
+const popupWithImage = new PopupWithImage(popupCardImg);
+popupWithImage.setEventListeners();
 
 container.querySelector('.profile__btn-add').addEventListener('click', function () {
-  showPopup(popupAddCard);
+  popupWithFormAdd.open();
+  validFormAddCard.resetInputErorr();
 });
+
 container.querySelector('.profile__btn-edit').addEventListener('click', function () {
-  showPopup(popupEdit);
-  copyTextPopupEdit();
+  popupWithFormProfile.open();
+  // получаем объект с данными полей из инпута
+  const profileData = userProfile.getUserInfo();
+  // копирования данных в поля инпута из профеля
+  inputName.value = profileData.name;
+  inputDescription.value = profileData.description;
+  validFormEdit.resetInputErorr();
 });
 
-formAddCard.addEventListener('submit', submitFormAddCard);
-container.querySelector('#formEdit').addEventListener('submit', submitFormEdit);
+printCards.printElement();
 
-
-export { popupImage, popupImageName, popupCardImg, showPopup };
+export { popupImage, popupImageName };
