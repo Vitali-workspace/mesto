@@ -26,9 +26,8 @@ const initialCards = [
 ];
 
 const container = document.querySelector('.root');
-//const profile = container.querySelector('.profile'); // вроде не нужен
-let profileName = document.querySelector('.profile__name');
-let profileDescription = document.querySelector('.profile__description');
+const profileButtonEdit = container.querySelector('.profile__btn-edit');
+const profileButtonAdd = container.querySelector('.profile__btn-add');
 const inputName = document.querySelector('#inputEditName');
 const inputDescription = document.querySelector('#inputEditText');
 
@@ -59,9 +58,8 @@ const objElements = {
 
 export {
   initialCards,
-  container,
-  profileName,
-  profileDescription,
+  profileButtonEdit,
+  profileButtonAdd,
   inputName,
   inputDescription,
   templateCard,

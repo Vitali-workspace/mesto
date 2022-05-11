@@ -1,9 +1,8 @@
 import './index.css';
 import {
   initialCards,
-  container,
-  profileName,
-  profileDescription,
+  profileButtonEdit,
+  profileButtonAdd,
   inputName,
   inputDescription,
   templateCard,
@@ -51,17 +50,17 @@ const printCards = new Section(
     }
   }, gallery);
 
-function inputValue() {
+function handleDataCard() {
   const newCard = {
     name: newCardName.value,
     link: newCardLink.value
   }
   const elementCard = getReadyCard(newCard);
   printCards.addItem(elementCard);
-  validFormAddCard.disabledSubmitAddCard();
+  validFormAddCard.disableSubmitButton();
 }
 
-const popupWithFormAdd = new PopupWithForm(popupAddCard, inputValue);
+const popupWithFormAdd = new PopupWithForm(popupAddCard, handleDataCard);
 
 const popupWithFormProfile = new PopupWithForm(popupEdit, () => {
   userProfile.setUserInfo(inputName, inputDescription);
@@ -72,12 +71,12 @@ const popupWithImage = new PopupWithImage(popupCardImg);
 const userProfile = new UserInfo({ name: '.profile__name', description: '.profile__description' });
 
 
-container.querySelector('.profile__btn-add').addEventListener('click', function () {
+profileButtonAdd.addEventListener('click', function () {
   popupWithFormAdd.open();
   validFormAddCard.resetInputErorr();
 });
 
-container.querySelector('.profile__btn-edit').addEventListener('click', function () {
+profileButtonEdit.addEventListener('click', function () {
   popupWithFormProfile.open();
   // получаем объект с данными полей из инпута
   const profileData = userProfile.getUserInfo();

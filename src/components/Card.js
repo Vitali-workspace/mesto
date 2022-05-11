@@ -1,3 +1,4 @@
+
 import { popupImage, popupImageName } from "../pages/index.js";
 
 class Card {
@@ -26,7 +27,8 @@ class Card {
   }
 
   _btnTrash() {
-    this.closest('.gallery__card').remove();
+    this._templateCardContent.remove();
+    this._templateCardContent = null;
   }
 
   _openImagePopup() {
@@ -38,7 +40,7 @@ class Card {
 
   _setEventListeners() {
     this._templateCardContent.querySelector('.gallery__btn-favorites').addEventListener('click', this._btnFavorites);
-    this._templateCardContent.querySelector('.gallery__btn-trash').addEventListener('click', this._btnTrash);
+    this._templateCardContent.querySelector('.gallery__btn-trash').addEventListener('click', () => this._btnTrash());
     this._templateCardContent.querySelector('.gallery__card-img').addEventListener('click', () => this._openImagePopup());
   }
 }

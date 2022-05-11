@@ -49,14 +49,14 @@ export class FormValidator {
     });
 
     if (hasInvalidInput) {
-      this.disabledSubmitAddCard();
+      this.disableSubmitButton();
     } else {
       this._submitBtn.classList.remove(this._parametersValidator.inactiveButtonClass);
       this._submitBtn.removeAttribute('disabled');
     }
   }
 
-  disabledSubmitAddCard() {
+  disableSubmitButton() {
     this._submitBtn.classList.add(this._parametersValidator.inactiveButtonClass);
     this._submitBtn.setAttribute('disabled', true);
   }
