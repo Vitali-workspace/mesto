@@ -2,21 +2,27 @@ class UserInfo {
   constructor(selectorProfile) {
     this._profileName = document.querySelector(selectorProfile.name);
     this._profileDescription = document.querySelector(selectorProfile.description);
+    this._profileAvatar = document.querySelector(selectorProfile.avatar);
   }
 
-  getUserInfo() {
+  getUserInfo(objsData) {
     // Возвращает значения записаные в профиле
     const profileResult = {
-      name: this._profileName.textContent,
-      description: this._profileDescription.textContent
+      name: this._profileName.textContent = objsData.serverName,
+      description: this._profileDescription.textContent = objsData.serverJob,
+      avatar: this._profileAvatar.src = objsData.serverAvatar
     }
     return profileResult;
   }
 
-  setUserInfo(inputProfileName, inputProfileDescription) {
-    // запись нового текста в профиль из полей ввода
-    this._profileName.textContent = inputProfileName.value;
-    this._profileDescription.textContent = inputProfileDescription.value;
+  setUserInfo(inputProfileName, inputProfileDescription, avatar) {
+    // Сохраняет новые данные в профиль страницы из формы
+    const profileName = this._profileName.textContent = inputProfileName.value;
+    const profileDescription = this._profileDescription.textContent = inputProfileDescription.value;
+    const profileAvatar = this._profileAvatar.src = avatar;
+
+    const objProfile = { name: profileName, job: profileDescription, avatar: profileAvatar }
+    return objProfile;
   }
 }
 
