@@ -26,4 +26,4 @@
 **10.** В проекте используется асинхронный код для отправки данных на сервер.
 
 ## Ссылка на GitHub Pages
-https://vitali-workspace.github.io/mesto-p4-public/index.html
+https://vitali-workspace.github.io/praktikum-public-9p/
