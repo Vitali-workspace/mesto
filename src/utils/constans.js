@@ -4,25 +4,12 @@ const profileButtonAdd = container.querySelector('.profile__btn-add');
 const inputName = document.querySelector('#inputEditName');
 const inputDescription = document.querySelector('#inputEditText');
 
-const templateCard = document.querySelector('#tempCard').content;
 const gallery = container.querySelector('.gallery');
-
-//const newCardName = container.querySelector('#inputAddName');
-//const newCardLink = container.querySelector('#inputAddLink');
 
 const formAddCard = container.querySelector('#formAdd');
 const formEdit = document.querySelector('#formEdit');
 const formAvatar = document.querySelector('#formAddAvatar');
 
-const popupEdit = container.querySelector('#popupEdit');
-const popupAddCard = container.querySelector('#popupAddCard');
-
-const popupCardImg = container.querySelector('#popupCardImg');
-const popupImage = container.querySelector('.popup__image');
-const popupImageName = container.querySelector('.popup__image-name');
-
-const popupAvatar = document.querySelector('#popupAvatar');
-const popupDeleteCard = document.querySelector('#popupDeleteCard');
 const profileButtonAvatar = document.querySelector('.profile__edit-icon');
 const profilePhoto = document.querySelector('.profile__photo');
 
@@ -35,34 +22,27 @@ const objElements = {
   errorClass: 'popup__input-error_active'
 }
 
-const configApi = {
-  tokenAuthorization: '6e087a0f-c27a-43c1-a0e6-91ac2272b53b',
-  profileInfoUrl: 'https://nomoreparties.co/v1/cohort-40/users/me',
-  profileAvatarUrl: 'https://mesto.nomoreparties.co/v1/cohort-40/users/me/avatar',
-  deleteCardUrl: 'https://mesto.nomoreparties.co/v1/cohort-40/cards/',
-  likeCardUrl: 'https://mesto.nomoreparties.co/v1/cohort-40/cards/',
-  cardsUrl: 'https://mesto.nomoreparties.co/v1/cohort-40/cards'
+const selectorPopup = {
+  template: '#tempCard',
+  edit: '#popupEdit',
+  addCard: '#popupAddCard',
+  cardImg: '#popupCardImg',
+  avatar: '#popupAvatar',
+  deleteCard: '#popupDeleteCard'
 }
+
 
 export {
   profileButtonEdit,
   profileButtonAdd,
   inputName,
   inputDescription,
-  templateCard,
   gallery,
   formAddCard,
   formEdit,
   formAvatar,
-  popupEdit,
-  popupAddCard,
-  popupCardImg,
-  popupImage,
-  popupImageName,
-  popupAvatar,
-  popupDeleteCard,
   profileButtonAvatar,
   profilePhoto,
   objElements,
-  configApi
+  selectorPopup
 };
