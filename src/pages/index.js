@@ -9,7 +9,6 @@ import {
   formEdit,
   formAvatar,
   profileButtonAvatar,
-  profilePhoto,
   objElements,
   selectorPopup
 } from '../utils/constans.js';
@@ -119,8 +118,7 @@ const popupWithFormAdd = new PopupWithForm(`${selectorPopup.addCard}`, handleDat
 
 
 // Отправка на сервер заполненого профиля.
-const popupWithFormProfile = new PopupWithForm(`${selectorPopup.edit}`, () => {
-  let profileData = { name: inputName.value, about: inputDescription.value, avatar: profilePhoto.src }
+const popupWithFormProfile = new PopupWithForm(`${selectorPopup.edit}`, (profileData) => {
 
   requestApi.changeProfileInfo(profileData)
     .then((res) => {
@@ -181,18 +179,13 @@ requestApi.getProfileInfo()
 profileButtonEdit.addEventListener('click', function () {
   popupWithFormProfile.open();
   // получаем объект с данными полей из инпута
+  const profileData = userProfile.getUserInfo();
 
-  requestApi.getProfileInfo()
-    .then(() => {
-      const profileData = userProfile.getUserInfo();
-
-      // подставление данных в поля инпута в момент открытия попапа
-      inputName.value = profileData.name;
-      inputDescription.value = profileData.about;
-      validFormEdit.disableSubmitButton();
-      validFormEdit.resetInputErorr();
-    })
-    .catch(err => Promise.reject(`Ошибка при получении профиля: ${err}`));
+  // подставление данных в поля инпута в момент открытия попапа
+  inputName.value = profileData.name;
+  inputDescription.value = profileData.about;
+  validFormEdit.disableSubmitButton();
+  validFormEdit.resetInputErorr();
 });
 
 popupWithFormProfile.setEventListeners();
