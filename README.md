@@ -5,6 +5,9 @@
 > [!NOTE]
 > [Ссылка на проект в GitHub Pages](https://vitali-workspace.github.io/praktikum-public-9p/)
 
+<p>&nbsp;</p>
+
+<img src="https://i.ibb.co/vmfTM6Y/perview-1.png" alt="demo">
 
 <h2>&#10032; Основные функции</h2>
 
